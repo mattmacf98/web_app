@@ -1,6 +1,3 @@
-use crate::to_do::traits::delete::Delete;
-use crate::to_do::traits::edit::Edit;
-use crate::to_do::traits::get::Get;
 use super::base::Base;
 use super::super::enums::TaskStatus;
 
@@ -17,7 +14,3 @@ impl Done {
         return Done {super_struct: base}
     }
 }
-
-impl Get for Done {}
-impl Edit for Done {}
-impl Delete for Done {}

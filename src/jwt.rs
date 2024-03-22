@@ -1,7 +1,6 @@
 use actix_web::dev::Payload;
 use actix_web::{Error, FromRequest, HttpRequest};
 use futures::future::{Ready, ok};
-use serde::de::Unexpected::Str;
 
 pub struct JwToken {
     pub message: String

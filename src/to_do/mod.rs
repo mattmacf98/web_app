@@ -4,7 +4,6 @@ use crate::to_do::structs::pending::Pending;
 
 pub mod enums;
 pub mod structs;
-pub mod traits;
 
 pub enum ItemType {
     Pending(Pending),
