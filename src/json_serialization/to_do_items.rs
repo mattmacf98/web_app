@@ -4,7 +4,7 @@ use actix_web::http::header::ContentType;
 use diesel;
 use diesel::prelude::*;
 use serde::{Serialize};
-use crate::database::establish_connection;
+use crate::database::{DBCONNECTION, establish_connection};
 use crate::to_do::enums::TaskStatus;
 use crate::to_do::{ItemType, to_do_factory};
 use crate::to_do::structs::base::Base;
@@ -42,14 +42,16 @@ impl ToDoItems {
         };
     }
 
-    pub fn get_state() -> ToDoItems {
-        let connection = establish_connection();
-        let mut array_buffer = Vec::new();
+    pub fn get_state(user_id: Option<i32>) -> ToDoItems {
+        let connection = DBCONNECTION.db_connection.get().unwrap();
 
-        let items = to_do::table
-            .order(to_do::columns::id.asc())
-            .load::<Item>(&connection).unwrap();
 
+        let items = match user_id {
+            None => to_do::table.order(to_do::columns::id.asc()).load::<Item>(&connection).unwrap(),
+            Some(user_id) => to_do::table.filter(to_do::columns::user_id.eq_all(user_id)).order(to_do::columns::id.asc()).load::<Item>(&connection).unwrap()
+        };
+
+        let mut array_buffer = Vec::with_capacity(items.len());
         for item in items {
             let status = TaskStatus::from_string(item.status);
             let item = to_do_factory(&item.title, status);
