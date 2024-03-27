@@ -22,3 +22,9 @@ serde_yaml = "0.8.23"
 lazy_static = "1.4.0"
 bcrypt = "0.15.0"
 uuid = {version="1.0.0", features=["serde", "v4"]}
+redis = "0.24.0"
+env_logger = "0.11.2"
+
+[build-dependencies]
+serde_yaml = "0.9.32"
+serde = {version="1.0.197", features=["derive"]}
