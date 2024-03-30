@@ -3,7 +3,7 @@ use std::fmt::Formatter;
 use serde::{Serialize, Serializer};
 use crate::to_do::enums::TaskStatus::{DONE, PENDING};
 
-#[derive(Clone)]
+#[derive(Clone, Eq, Debug)]
 pub enum TaskStatus {
     DONE,
     PENDING
@@ -22,6 +22,25 @@ impl TaskStatus {
             "DONE" => DONE,
             "PENDING" => PENDING,
             _ => panic!("input {} not supported", input_string)
+        }
+    }
+}
+
+impl PartialEq for TaskStatus {
+    fn eq(&self, other: &Self) -> bool {
+        match self {
+            DONE => {
+                match other {
+                    DONE => true,
+                    PENDING => false,
+                }
+            }
+            PENDING => {
+                match other {
+                    DONE => false,
+                    PENDING => true
+                }
+            }
         }
     }
 }

@@ -27,8 +27,7 @@ pub async fn login(credentials: web::Json<Login>, db: DB) -> HttpResponse {
             let token = JwToken::new(users[0].id);
             let raw_token = token.encode();
             let response = LoginResponse{token: raw_token.clone()};
-            let body = serde_json::to_string(&response).unwrap();
-            HttpResponse::Ok().append_header(("token", raw_token)).json(&body)
+            HttpResponse::Ok().append_header(("token", raw_token)).json(&response)
         },
         false => HttpResponse::Unauthorized().finish()
     };

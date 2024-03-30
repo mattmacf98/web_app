@@ -1,0 +1,515 @@
+{
+	"info": {
+		"_postman_id": "2fffdccf-96a6-4782-be6b-a746755c1741",
+		"name": "todo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "2875254"
+	},
+	"item": [
+		{
+			"name": "1_create",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var result = pm.response.json()",
+							"",
+							"pm.test(\"response is ok\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"returns one pending item\", function () {",
+							"    if (result[\"pending_items\"].length !== 1) {",
+							"        throw new Error(\"returns the wrong number of pending items\");",
+							"    }",
+							"});",
+							"",
+							"pm.test(\"pending item has the correct title\", function () {",
+							"    if (result[\"pending_items\"][0][\"title\"] !== \"washing\") {",
+							"        throw new Error(\"title of the pending item is not 'washing'\");",
+							"    }",
+							"});",
+							"",
+							"pm.test(\"pending item has the correct status\", function () {",
+							"    if (result[\"pending_items\"][0][\"status\"] !== \"PENDING\") {",
+							"        throw new Error(\"status of the pending item is not 'PENDING'\");",
+							"    }",
+							"});",
+							"",
+							"pm.test(\"returns zero done items\", function () {",
+							"    if (result[\"done_items\"].length !== 0) {",
+							"        throw new Error(\"returns the wrong number of done items\");",
+							"    }",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": "http://localhost:8000/v1/item/create/washing"
+			},
+			"response": []
+		},
+		{
+			"name": "2_create",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var result = pm.response.json()",
+							"",
+							"pm.test(\"response is ok\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"returns one pending item\", function () {",
+							"    if (result[\"pending_items\"].length !== 2) {",
+							"        throw new Error(\"returns the wrong number of pending items\");",
+							"    }",
+							"});",
+							"",
+							"pm.test(\"pending item has the correct title\", function () {",
+							"    if (result[\"pending_items\"][0][\"title\"] !== \"washing\") {",
+							"        throw new Error(\"title of the pending item is not 'washing'\");",
+							"    }",
+							"});",
+							"",
+							"pm.test(\"pending item has the correct status\", function () {",
+							"    if (result[\"pending_items\"][0][\"status\"] !== \"PENDING\") {",
+							"        throw new Error(\"status of the pending item is not 'PENDING'\");",
+							"    }",
+							"});",
+							"",
+							"pm.test(\"pending item has the correct title\", function () {",
+							"    if (result[\"pending_items\"][1][\"title\"] !== \"cooking\") {",
+							"        throw new Error(\"title of the pending item is not 'cooking'\");",
+							"    }",
+							"});",
+							"",
+							"pm.test(\"pending item has the correct status\", function () {",
+							"    if (result[\"pending_items\"][1][\"status\"] !== \"PENDING\") {",
+							"        throw new Error(\"status of the pending item is not 'PENDING'\");",
+							"    }",
+							"});",
+							"",
+							"pm.test(\"returns zero done items\", function () {",
+							"    if (result[\"done_items\"].length !== 0) {",
+							"        throw new Error(\"returns the wrong number of done items\");",
+							"    }",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": "http://localhost:8000/v1/item/create/cooking"
+			},
+			"response": []
+		},
+		{
+			"name": "3_create",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var result = pm.response.json()",
+							"",
+							"pm.test(\"response is ok\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"returns one pending item\", function () {",
+							"    if (result[\"pending_items\"].length !== 2) {",
+							"        throw new Error(\"returns the wrong number of pending items\");",
+							"    }",
+							"});",
+							"",
+							"pm.test(\"pending item has the correct title\", function () {",
+							"    if (result[\"pending_items\"][0][\"title\"] !== \"washing\") {",
+							"        throw new Error(\"title of the pending item is not 'washing'\");",
+							"    }",
+							"});",
+							"",
+							"pm.test(\"pending item has the correct status\", function () {",
+							"    if (result[\"pending_items\"][0][\"status\"] !== \"PENDING\") {",
+							"        throw new Error(\"status of the pending item is not 'PENDING'\");",
+							"    }",
+							"});",
+							"",
+							"pm.test(\"pending item has the correct title\", function () {",
+							"    if (result[\"pending_items\"][1][\"title\"] !== \"cooking\") {",
+							"        throw new Error(\"title of the pending item is not 'cooking'\");",
+							"    }",
+							"});",
+							"",
+							"pm.test(\"pending item has the correct status\", function () {",
+							"    if (result[\"pending_items\"][1][\"status\"] !== \"PENDING\") {",
+							"        throw new Error(\"status of the pending item is not 'PENDING'\");",
+							"    }",
+							"});",
+							"",
+							"pm.test(\"returns zero done items\", function () {",
+							"    if (result[\"done_items\"].length !== 0) {",
+							"        throw new Error(\"returns the wrong number of done items\");",
+							"    }",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": "http://localhost:8000/v1/item/create/cooking"
+			},
+			"response": []
+		},
+		{
+			"name": "4_edit",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var result = pm.response.json()",
+							"",
+							"pm.test(\"response is ok\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"returns one pending item\", function () {",
+							"    if (result[\"pending_items\"].length !== 1) {",
+							"        throw new Error(\"returns the wrong number of pending items\");",
+							"    }",
+							"});",
+							"",
+							"pm.test(\"pending item has the correct title\", function () {",
+							"    if (result[\"pending_items\"][0][\"title\"] !== \"washing\") {",
+							"        throw new Error(\"title of the pending item is not 'washing'\");",
+							"    }",
+							"});",
+							"",
+							"pm.test(\"pending item has the correct status\", function () {",
+							"    if (result[\"pending_items\"][0][\"status\"] !== \"PENDING\") {",
+							"        throw new Error(\"status of the pending item is not 'PENDING'\");",
+							"    }",
+							"});",
+							"",
+							"pm.test(\"returns one done items\", function () {",
+							"    if (result[\"done_items\"].length !== 1) {",
+							"        throw new Error(\"returns the wrong number of done items\");",
+							"    }",
+							"});",
+							"",
+							"pm.test(\"done item has the correct title\", function () {",
+							"    if (result[\"done_items\"][0][\"title\"] !== \"cooking\") {",
+							"        throw new Error(\"title of the pending item is not 'cooking'\");",
+							"    }",
+							"});",
+							"",
+							"pm.test(\"done item has the correct status\", function () {",
+							"    if (result[\"done_items\"][0][\"status\"] !== \"DONE\") {",
+							"        throw new Error(\"status of the done item is not 'DONE'\");",
+							"    }",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"cooking\",\n    \"status\": \"DONE\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8000/v1/item/edit"
+			},
+			"response": []
+		},
+		{
+			"name": "5_edit",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var result = pm.response.json()",
+							"",
+							"pm.test(\"response is ok\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"returns one pending item\", function () {",
+							"    if (result[\"pending_items\"].length !== 0) {",
+							"        throw new Error(\"returns the wrong number of pending items\");",
+							"    }",
+							"});",
+							"",
+							"pm.test(\"returns one done items\", function () {",
+							"    if (result[\"done_items\"].length !== 2) {",
+							"        throw new Error(\"returns the wrong number of done items\");",
+							"    }",
+							"});",
+							"",
+							"pm.test(\"done item has the correct title\", function () {",
+							"    if (result[\"done_items\"][1][\"title\"] !== \"cooking\") {",
+							"        throw new Error(\"title of the pending item is not 'cooking'\");",
+							"    }",
+							"});",
+							"",
+							"pm.test(\"done item has the correct status\", function () {",
+							"    if (result[\"done_items\"][1][\"status\"] !== \"DONE\") {",
+							"        throw new Error(\"status of the done item is not 'DONE'\");",
+							"    }",
+							"});",
+							"",
+							"pm.test(\"done item has the correct title\", function () {",
+							"    if (result[\"done_items\"][0][\"title\"] !== \"washing\") {",
+							"        throw new Error(\"title of the done item is not 'washing'\");",
+							"    }",
+							"});",
+							"",
+							"pm.test(\"done item has the correct status\", function () {",
+							"    if (result[\"done_items\"][0][\"status\"] !== \"DONE\") {",
+							"        throw new Error(\"status of the done item is not 'DONE'\");",
+							"    }",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"washing\",\n    \"status\": \"DONE\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8000/v1/item/edit"
+			},
+			"response": []
+		},
+		{
+			"name": "6_edit",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var result = pm.response.json()",
+							"",
+							"pm.test(\"response is ok\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"returns one pending item\", function () {",
+							"    if (result[\"pending_items\"].length !== 0) {",
+							"        throw new Error(\"returns the wrong number of pending items\");",
+							"    }",
+							"});",
+							"",
+							"pm.test(\"returns one done items\", function () {",
+							"    if (result[\"done_items\"].length !== 2) {",
+							"        throw new Error(\"returns the wrong number of done items\");",
+							"    }",
+							"});",
+							"",
+							"pm.test(\"done item has the correct title\", function () {",
+							"    if (result[\"done_items\"][1][\"title\"] !== \"cooking\") {",
+							"        throw new Error(\"title of the pending item is not 'cooking'\");",
+							"    }",
+							"});",
+							"",
+							"pm.test(\"done item has the correct status\", function () {",
+							"    if (result[\"done_items\"][1][\"status\"] !== \"DONE\") {",
+							"        throw new Error(\"status of the done item is not 'DONE'\");",
+							"    }",
+							"});",
+							"",
+							"pm.test(\"done item has the correct title\", function () {",
+							"    if (result[\"done_items\"][0][\"title\"] !== \"washing\") {",
+							"        throw new Error(\"title of the done item is not 'washing'\");",
+							"    }",
+							"});",
+							"",
+							"pm.test(\"done item has the correct status\", function () {",
+							"    if (result[\"done_items\"][0][\"status\"] !== \"DONE\") {",
+							"        throw new Error(\"status of the done item is not 'DONE'\");",
+							"    }",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"FAKE\",\n    \"status\": \"DONE\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8000/v1/item/edit"
+			},
+			"response": []
+		},
+		{
+			"name": "7_delete",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var result = pm.response.json()",
+							"",
+							"pm.test(\"response is ok\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"returns one pending item\", function () {",
+							"    if (result[\"pending_items\"].length !== 0) {",
+							"        throw new Error(\"returns the wrong number of pending items\");",
+							"    }",
+							"});",
+							"",
+							"pm.test(\"returns one done items\", function () {",
+							"    if (result[\"done_items\"].length !== 1) {",
+							"        throw new Error(\"returns the wrong number of done items\");",
+							"    }",
+							"});",
+							"",
+							"pm.test(\"done item has the correct title\", function () {",
+							"    if (result[\"done_items\"][0][\"title\"] !== \"cooking\") {",
+							"        throw new Error(\"title of the pending item is not 'cooking'\");",
+							"    }",
+							"});",
+							"",
+							"pm.test(\"done item has the correct status\", function () {",
+							"    if (result[\"done_items\"][0][\"status\"] !== \"DONE\") {",
+							"        throw new Error(\"status of the done item is not 'DONE'\");",
+							"    }",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"washing\",\n    \"status\": \"DONE\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8000/v1/item/delete"
+			},
+			"response": []
+		},
+		{
+			"name": "8_done",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var result = pm.response.json()",
+							"",
+							"pm.test(\"response is ok\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"returns one pending item\", function () {",
+							"    if (result[\"pending_items\"].length !== 0) {",
+							"        throw new Error(\"returns the wrong number of pending items\");",
+							"    }",
+							"});",
+							"",
+							"pm.test(\"returns one done items\", function () {",
+							"    if (result[\"done_items\"].length !== 0) {",
+							"        throw new Error(\"returns the wrong number of done items\");",
+							"    }",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"cooking\",\n    \"status\": \"DONE\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8000/v1/item/delete"
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": {
+			"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJleHAiOjE3MTE4MzMwNDV9.jR2SAqRzRd1KLYJqIVIOwVXEr5c9FeJjqcMsDXnIKFA",
+			"in": "header",
+			"key": "token"
+		}
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

@@ -1,6 +1,8 @@
 use actix_cors::Cors;
 #[macro_use] extern crate diesel;
 extern crate dotenv;
+extern crate core;
+
 use actix_web::{App, HttpServer, HttpResponse, middleware::Logger};
 use env_logger;
 use actix_service::Service;
