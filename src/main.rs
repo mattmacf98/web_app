@@ -20,7 +20,7 @@ mod counter;
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
-    const ALLOWED_VERSION: &'static str = include_str!("./output_data.txt");
+    const ALLOWED_VERSION: &'static str = "v1";
     env_logger::init_from_env(env_logger::Env::new().default_filter_or("info"));
 
     let site_counter = counter::Counter{count: 0};
@@ -53,7 +53,7 @@ async fn main() -> std::io::Result<()> {
             })
             .configure(views::views_factory).wrap(cors).wrap(Logger::new("%a %{User-Agent}i %r %s %D"))
     })
-    .bind("127.0.0.1:8000")?
+    .bind("0.0.0.0:8000")?
     .run()
     .await
 }
